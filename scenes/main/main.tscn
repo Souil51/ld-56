@@ -1,0 +1,264 @@
+[gd_scene load_steps=18 format=3 uid="uid://c1x8f17web2qr"]
+
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_7v26j"]
+[ext_resource type="Texture2D" uid="uid://crd2rsv6k3qqn" path="res://assets/background.png" id="2_efx34"]
+[ext_resource type="Script" path="res://scenes/game/game.gd" id="2_wrxnl"]
+[ext_resource type="Texture2D" uid="uid://qaev6x5ns2yo" path="res://assets/menu.png" id="3_6k26y"]
+[ext_resource type="Texture2D" uid="uid://db5vhso41ajgc" path="res://assets/square.png" id="3_iledv"]
+[ext_resource type="Script" path="res://scenes/bonus/bonus_manager.gd" id="4_r5ahg"]
+[ext_resource type="Script" path="res://scenes/main/trashbin.gd" id="5_2imbn"]
+[ext_resource type="PackedScene" uid="uid://bgewgs0408frh" path="res://scenes/bonus/bonus.tscn" id="5_4oghf"]
+[ext_resource type="Texture2D" uid="uid://byrq3a4wxh2xc" path="res://assets/recycle.png" id="5_jirse"]
+[ext_resource type="Script" path="res://scenes/main/objectif.gd" id="8_txxtl"]
+[ext_resource type="Texture2D" uid="uid://b6id21cv53cd2" path="res://assets/coin.png" id="8_y56j7"]
+[ext_resource type="Script" path="res://scenes/menu/growth_effect.gd" id="9_dxqrp"]
+[ext_resource type="Texture2D" uid="uid://cgbrnf24a1abp" path="res://assets/square_one_empty-white.png" id="13_8g2tj"]
+[ext_resource type="Texture2D" uid="uid://ndxn1r2pln5t" path="res://assets/square_one_inner.png" id="13_pixah"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ufxmy"]
+size = Vector2(93.75, 89.3125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h6jx5"]
+size = Vector2(83, 83)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lv1wy"]
+size = Vector2(9, 9)
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_7v26j")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(639, 404.5)
+scale = Vector2(1, 0.904167)
+texture = ExtResource("2_efx34")
+flip_v = true
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(640.749, 54.2578)
+scale = Vector2(1.00195, 0.582578)
+texture = ExtResource("3_6k26y")
+
+[node name="Game" type="Node2D" parent="."]
+script = ExtResource("2_wrxnl")
+
+[node name="label" type="Label" parent="."]
+offset_left = 39.0
+offset_top = 8.0
+offset_right = 74.0
+offset_bottom = 63.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="label2" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 52.0
+offset_right = 103.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Creatures"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bonus_manager" type="Node2D" parent="."]
+script = ExtResource("4_r5ahg")
+
+[node name="trashbin" type="Node2D" parent="bonus_manager"]
+position = Vector2(1233, 44)
+script = ExtResource("5_2imbn")
+
+[node name="sprite" type="Sprite2D" parent="bonus_manager/trashbin"]
+self_modulate = Color(0.623529, 0.623529, 0.623529, 0)
+position = Vector2(0, 3.8147e-06)
+scale = Vector2(0.734376, 0.695313)
+texture = ExtResource("3_iledv")
+
+[node name="inner_sprite" type="Sprite2D" parent="bonus_manager/trashbin/sprite"]
+position = Vector2(0.869, 0.684)
+scale = Vector2(1.35106, 1.35106)
+texture = ExtResource("5_jirse")
+
+[node name="area" type="Area2D" parent="bonus_manager/trashbin" groups=["trash"]]
+
+[node name="collision" type="CollisionShape2D" parent="bonus_manager/trashbin/area"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_ufxmy")
+
+[node name="store" type="Node2D" parent="bonus_manager"]
+position = Vector2(773, 45)
+
+[node name="bonus_1" parent="bonus_manager/store" instance=ExtResource("5_4oghf")]
+
+[node name="bonus_2" parent="bonus_manager/store" instance=ExtResource("5_4oghf")]
+position = Vector2(101, 0)
+id = 1
+price = 1
+
+[node name="bonus_3" parent="bonus_manager/store" instance=ExtResource("5_4oghf")]
+position = Vector2(201, 0)
+id = 2
+price = 2
+
+[node name="label" type="Label" parent="bonus_manager/store"]
+offset_left = -89.465
+offset_top = -39.725
+offset_right = -73.465
+offset_bottom = -4.725
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "X"
+
+[node name="Sprite2D" type="Sprite2D" parent="bonus_manager/store"]
+position = Vector2(-81, 16)
+scale = Vector2(0.511718, 0.511718)
+texture = ExtResource("8_y56j7")
+script = ExtResource("9_dxqrp")
+scale_start = Vector2(0.6, 0.6)
+scale_end = Vector2(0.5, 0.5)
+
+[node name="colors" type="Node2D" parent="bonus_manager"]
+position = Vector2(1041, 84)
+
+[node name="red" type="Node2D" parent="bonus_manager/colors"]
+position = Vector2(-2.15, 0)
+
+[node name="background" type="Sprite2D" parent="bonus_manager/colors/red"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(24, -39)
+scale = Vector2(0.234375, 0.484375)
+texture = ExtResource("3_iledv")
+
+[node name="color" type="Sprite2D" parent="bonus_manager/colors/red"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(35, -12)
+rotation = 3.14159
+scale = Vector2(0.171875, 0.421875)
+texture = ExtResource("3_iledv")
+centered = false
+
+[node name="green" type="Node2D" parent="bonus_manager/colors"]
+position = Vector2(39.98, 0)
+
+[node name="background" type="Sprite2D" parent="bonus_manager/colors/green"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(24, -39)
+scale = Vector2(0.234375, 0.484375)
+texture = ExtResource("3_iledv")
+
+[node name="color" type="Sprite2D" parent="bonus_manager/colors/green"]
+modulate = Color(0, 1, 0.0600204, 1)
+position = Vector2(35, -12)
+rotation = 3.14159
+scale = Vector2(0.171875, 0.421875)
+texture = ExtResource("3_iledv")
+centered = false
+
+[node name="blue" type="Node2D" parent="bonus_manager/colors"]
+position = Vector2(82.585, 0)
+
+[node name="background" type="Sprite2D" parent="bonus_manager/colors/blue"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(24, -39)
+scale = Vector2(0.234375, 0.484375)
+texture = ExtResource("3_iledv")
+
+[node name="color" type="Sprite2D" parent="bonus_manager/colors/blue"]
+modulate = Color(0, 0.146028, 1, 1)
+position = Vector2(35, -12)
+rotation = 3.14159
+scale = Vector2(0.171875, 0.421875)
+texture = ExtResource("3_iledv")
+centered = false
+
+[node name="objectif" type="Node2D" parent="."]
+position = Vector2(178, 1)
+
+[node name="label" type="Label" parent="objectif"]
+offset_left = 120.0
+offset_top = 11.0
+offset_right = 265.0
+offset_bottom = 78.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Goal : "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="label_tries" type="Label" parent="objectif"]
+offset_left = 334.0
+offset_top = 5.0
+offset_right = 489.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "x tries left"
+vertical_alignment = 1
+
+[node name="label_best_try" type="Label" parent="objectif"]
+offset_left = 335.0
+offset_top = 46.0
+offset_right = 456.0
+offset_bottom = 81.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "x tries left"
+vertical_alignment = 1
+
+[node name="label_merge_count" type="Label" parent="objectif"]
+offset_left = -52.0
+offset_top = 5.0
+offset_right = 55.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "x
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="label_merge_count2" type="Label" parent="objectif"]
+offset_left = -56.0
+offset_top = 47.0
+offset_right = 51.0
+offset_bottom = 82.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Merges"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="objectif_root" type="Node2D" parent="objectif"]
+position = Vector2(286, 43)
+script = ExtResource("8_txxtl")
+
+[node name="background" type="Sprite2D" parent="objectif/objectif_root"]
+self_modulate = Color(0.423062, 0.300844, 0.181853, 1)
+position = Vector2(1, 1)
+scale = Vector2(0.648437, 0.648438)
+texture = ExtResource("13_8g2tj")
+
+[node name="sprite" type="Sprite2D" parent="objectif/objectif_root"]
+position = Vector2(0.250015, 1.16695)
+scale = Vector2(0.652343, 0.642023)
+texture = ExtResource("13_pixah")
+
+[node name="area" type="Area2D" parent="objectif/objectif_root" groups=["objectif"]]
+
+[node name="collision" type="CollisionShape2D" parent="objectif/objectif_root/area"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_h6jx5")
+
+[node name="audio_player" type="AudioStreamPlayer" parent="."]
+volume_db = -15.0
+
+[node name="mouse_area" type="Area2D" parent="." groups=["mouse"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mouse_area"]
+position = Vector2(-5.5, -5.5)
+shape = SubResource("RectangleShape2D_lv1wy")
+
+[connection signal="input_event" from="bonus_manager/trashbin/area" to="bonus_manager/trashbin" method="_on_area_input_event"]
+[connection signal="input_event" from="objectif/objectif_root/area" to="objectif/objectif_root" method="_on_area_input_event"]

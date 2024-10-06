@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvui3bdwx3yax"]
+
+[ext_resource type="Script" path="res://scenes/menu/menu_creature.gd" id="1_8sxd8"]
+[ext_resource type="Texture2D" uid="uid://bdsa5e4ykawgt" path="res://assets/spritesheet_complet.png" id="2_jo4ec"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltg23"]
+size = Vector2(113, 119)
+
+[node name="menu_creature_root" type="Node2D"]
+script = ExtResource("1_8sxd8")
+
+[node name="sprite" type="Sprite2D" parent="."]
+modulate = Color(0.481218, 0, 0.490948, 1)
+scale = Vector2(3.15625, 3.15625)
+texture = ExtResource("2_jo4ec")
+hframes = 19
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ltg23")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

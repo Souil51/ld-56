@@ -1,0 +1,581 @@
+[gd_scene load_steps=15 format=3 uid="uid://ct481etkiwsqy"]
+
+[ext_resource type="Texture2D" uid="uid://db5vhso41ajgc" path="res://assets/square.png" id="1_15p08"]
+[ext_resource type="Script" path="res://scenes/menu/menu.gd" id="1_u0d4c"]
+[ext_resource type="Texture2D" uid="uid://crd2rsv6k3qqn" path="res://assets/background.png" id="2_a2al1"]
+[ext_resource type="Texture2D" uid="uid://byrq3a4wxh2xc" path="res://assets/recycle.png" id="2_vm1th"]
+[ext_resource type="Texture2D" uid="uid://qaev6x5ns2yo" path="res://assets/menu.png" id="3_20eyg"]
+[ext_resource type="PackedScene" uid="uid://dvui3bdwx3yax" path="res://scenes/menu/menu_creature.tscn" id="4_lx1j7"]
+[ext_resource type="Script" path="res://scenes/menu/growth_effect.gd" id="5_g078l"]
+[ext_resource type="Script" path="res://scenes/menu/drag_drop_helper.gd" id="5_ghn4e"]
+[ext_resource type="Texture2D" uid="uid://cgbrnf24a1abp" path="res://assets/square_one_empty-white.png" id="6_227yj"]
+[ext_resource type="Texture2D" uid="uid://b0iuu4ss4d04t" path="res://assets/mouse.png" id="6_apwc8"]
+[ext_resource type="Texture2D" uid="uid://ndxn1r2pln5t" path="res://assets/square_one_inner.png" id="7_te617"]
+[ext_resource type="Texture2D" uid="uid://b6id21cv53cd2" path="res://assets/coin.png" id="8_ybvxj"]
+[ext_resource type="Texture2D" uid="uid://datu88fgx14jd" path="res://assets/rect_background.png" id="11_6brhf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvuhy"]
+size = Vector2(129, 126.5)
+
+[node name="menu_root" type="Node2D"]
+script = ExtResource("1_u0d4c")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(643, 409)
+scale = Vector2(1.00469, 0.875)
+texture = ExtResource("2_a2al1")
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(640, 57.5156)
+scale = Vector2(1.00469, 0.565156)
+texture = ExtResource("3_20eyg")
+
+[node name="label" type="Label" parent="."]
+offset_left = 21.0
+offset_top = -14.0
+offset_right = 94.0
+offset_bottom = 77.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="label_creatures" type="Label" parent="."]
+offset_top = -30.0
+offset_right = 126.0
+offset_bottom = 173.02
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "creatures"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="bonus_manager" type="Node2D" parent="."]
+
+[node name="trashbin" type="Node2D" parent="bonus_manager"]
+position = Vector2(1233, 44)
+
+[node name="sprite" type="Sprite2D" parent="bonus_manager/trashbin"]
+self_modulate = Color(0.623529, 0.623529, 0.623529, 0)
+position = Vector2(0, 3.8147e-06)
+scale = Vector2(0.734376, 0.695313)
+texture = ExtResource("1_15p08")
+
+[node name="inner_sprite" type="Sprite2D" parent="bonus_manager/trashbin/sprite"]
+position = Vector2(0.869, 0.684)
+scale = Vector2(1.35106, 1.35106)
+texture = ExtResource("2_vm1th")
+
+[node name="store" type="Node2D" parent="bonus_manager"]
+position = Vector2(773, 45)
+
+[node name="label" type="Label" parent="bonus_manager/store"]
+offset_left = -80.0
+offset_top = -33.0
+offset_right = -67.0
+offset_bottom = -5.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "2
+"
+
+[node name="bonus" type="Sprite2D" parent="bonus_manager/store"]
+self_modulate = Color(0.423529, 0.301961, 0.180392, 1)
+position = Vector2(-1, 0)
+scale = Vector2(0.703125, 0.695312)
+texture = ExtResource("6_227yj")
+
+[node name="Sprite2D" type="Sprite2D" parent="bonus_manager/store/bonus"]
+scale = Vector2(1, 1)
+texture = ExtResource("7_te617")
+
+[node name="label" type="Label" parent="bonus_manager/store/bonus"]
+offset_left = -64.0
+offset_top = -77.663
+offset_right = 62.0
+offset_bottom = 48.337
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "+25%"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="label2" type="Label" parent="bonus_manager/store/bonus"]
+offset_left = -64.0
+offset_top = -67.5956
+offset_right = 62.0
+offset_bottom = 135.424
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "1 gold"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="bonus2" type="Sprite2D" parent="bonus_manager/store"]
+self_modulate = Color(0.423529, 0.301961, 0.180392, 1)
+position = Vector2(105, 0)
+scale = Vector2(0.703125, 0.695312)
+texture = ExtResource("6_227yj")
+
+[node name="Sprite2D" type="Sprite2D" parent="bonus_manager/store/bonus2"]
+scale = Vector2(1, 1)
+texture = ExtResource("7_te617")
+
+[node name="label" type="Label" parent="bonus_manager/store/bonus2"]
+offset_left = -61.1556
+offset_top = -81.9776
+offset_right = 64.8444
+offset_bottom = 44.0224
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Invert"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="label2" type="Label" parent="bonus_manager/store/bonus2"]
+offset_left = -64.0
+offset_top = -67.5956
+offset_right = 62.0
+offset_bottom = 135.424
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "2 gold"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="bonus3" type="Sprite2D" parent="bonus_manager/store"]
+self_modulate = Color(0.423529, 0.301961, 0.180392, 1)
+position = Vector2(206, 0)
+scale = Vector2(0.703125, 0.695312)
+texture = ExtResource("6_227yj")
+
+[node name="Sprite2D" type="Sprite2D" parent="bonus_manager/store/bonus3"]
+scale = Vector2(1, 1)
+texture = ExtResource("7_te617")
+
+[node name="label" type="Label" parent="bonus_manager/store/bonus3"]
+offset_left = -62.5778
+offset_top = -81.9776
+offset_right = 63.4222
+offset_bottom = 44.0224
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Block"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="label2" type="Label" parent="bonus_manager/store/bonus3"]
+offset_left = -64.0
+offset_top = -67.5956
+offset_right = 62.0
+offset_bottom = 135.424
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "3 gold"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="bonus_manager/store"]
+position = Vector2(-74.75, 18.25)
+scale = Vector2(0.554687, 0.554687)
+texture = ExtResource("8_ybvxj")
+
+[node name="colors" type="Node2D" parent="bonus_manager"]
+position = Vector2(1041, 84)
+
+[node name="red" type="Node2D" parent="bonus_manager/colors"]
+position = Vector2(-2.15, 0)
+
+[node name="background" type="Sprite2D" parent="bonus_manager/colors/red"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(24, -39)
+scale = Vector2(0.234375, 0.484375)
+texture = ExtResource("1_15p08")
+
+[node name="color" type="Sprite2D" parent="bonus_manager/colors/red"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(35, -12)
+rotation = 3.14159
+scale = Vector2(0.172, 0.342)
+texture = ExtResource("1_15p08")
+centered = false
+
+[node name="green" type="Node2D" parent="bonus_manager/colors"]
+position = Vector2(39.98, 0)
+
+[node name="background" type="Sprite2D" parent="bonus_manager/colors/green"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(24, -39)
+scale = Vector2(0.234375, 0.484375)
+texture = ExtResource("1_15p08")
+
+[node name="color" type="Sprite2D" parent="bonus_manager/colors/green"]
+modulate = Color(0, 1, 0.0600204, 1)
+position = Vector2(35, -12)
+rotation = 3.14159
+scale = Vector2(0.172, 0.147)
+texture = ExtResource("1_15p08")
+centered = false
+
+[node name="blue" type="Node2D" parent="bonus_manager/colors"]
+position = Vector2(82.585, 0)
+
+[node name="background" type="Sprite2D" parent="bonus_manager/colors/blue"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(24, -39)
+scale = Vector2(0.234375, 0.484375)
+texture = ExtResource("1_15p08")
+
+[node name="color" type="Sprite2D" parent="bonus_manager/colors/blue"]
+modulate = Color(0, 0.146028, 1, 1)
+position = Vector2(35, -12)
+rotation = 3.14159
+scale = Vector2(0.172, 0.292)
+texture = ExtResource("1_15p08")
+centered = false
+
+[node name="Label5" type="Label" parent="bonus_manager"]
+offset_left = 1066.0
+offset_top = 90.0
+offset_right = 1297.0
+offset_bottom = 239.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Drag and drop the recycle icon on a creature to recycle it"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label6" type="Label" parent="bonus_manager"]
+offset_left = 708.0
+offset_top = 87.0
+offset_right = 1064.0
+offset_bottom = 236.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "When recycling creatures, you will get gold to buy bonuses. Drag and drop them on a creature to use"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label7" type="Label" parent="bonus_manager"]
+offset_left = 1047.0
+offset_top = 414.0
+offset_right = 1282.0
+offset_bottom = 721.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Bonuses :
+- +25% : add a quarter of the Red, Green or Blue value
+- Inverse : Inverse the R, G or B value (0.25 to 0.75, 0.33 to 0.66)
+- Block : Keep this value when merging with another creature"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="objectif" type="Node2D" parent="."]
+position = Vector2(171, 0)
+
+[node name="label" type="Label" parent="objectif"]
+offset_left = 121.0
+offset_top = 11.0
+offset_right = 266.0
+offset_bottom = 78.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Goal : "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="label_tries" type="Label" parent="objectif"]
+offset_left = 336.0
+offset_top = 11.0
+offset_right = 443.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "2 tries left"
+vertical_alignment = 1
+
+[node name="label_best_try" type="Label" parent="objectif"]
+offset_left = 336.0
+offset_top = 51.0
+offset_right = 472.0
+offset_bottom = 79.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Best try : 45 %"
+vertical_alignment = 1
+
+[node name="objectif_root" type="Node2D" parent="objectif"]
+position = Vector2(286, 43)
+
+[node name="background" type="Sprite2D" parent="objectif/objectif_root"]
+self_modulate = Color(0.423529, 0.301961, 0.180392, 1)
+position = Vector2(0, 1)
+scale = Vector2(0.648437, 0.648438)
+texture = ExtResource("6_227yj")
+
+[node name="sprite" type="Sprite2D" parent="objectif/objectif_root"]
+modulate = Color(0.771546, 0.335032, 0.335032, 1)
+position = Vector2(4.76837e-06, 0.999998)
+scale = Vector2(0.496093, 0.488245)
+texture = ExtResource("1_15p08")
+
+[node name="Label4" type="Label" parent="objectif"]
+offset_left = -56.0
+offset_top = 108.0
+offset_right = 438.0
+offset_bottom = 181.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Your goal is to get the most similar color than the objective in 3 tries"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label9" type="Label" parent="objectif"]
+offset_left = -62.0
+offset_top = 169.0
+offset_right = 432.0
+offset_bottom = 242.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Drag and drop the objective of on creature to test your guess"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="creatures" type="Node2D" parent="."]
+position = Vector2(375, -40)
+
+[node name="Label" type="Label" parent="creatures"]
+offset_left = 203.0
+offset_top = 364.0
+offset_right = 252.0
+offset_bottom = 433.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="creatures"]
+offset_left = 361.0
+offset_top = 359.0
+offset_right = 410.0
+offset_bottom = 428.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "="
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="creatures"]
+offset_left = -48.0
+offset_top = 287.0
+offset_right = 687.0
+offset_bottom = 335.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Drag and drop one creature on another to merge their colors"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="menu_creature_root2" parent="creatures" instance=ExtResource("4_lx1j7")]
+position = Vector2(155, 401)
+color = Color(0, 0.148628, 1, 1)
+
+[node name="menu_creature_root3" parent="creatures" instance=ExtResource("4_lx1j7")]
+position = Vector2(301, 400)
+color = Color(1, 0, 0, 1)
+
+[node name="menu_creature_root" parent="creatures" instance=ExtResource("4_lx1j7")]
+position = Vector2(464, 397)
+color = Color(0.540732, 0, 0.489233, 1)
+
+[node name="start" type="Node2D" parent="creatures"]
+position = Vector2(311, 580)
+
+[node name="Sprite2D" type="Sprite2D" parent="creatures/start"]
+self_modulate = Color(0.423529, 0.301961, 0.180392, 1)
+texture = ExtResource("6_227yj")
+
+[node name="Sprite2D" type="Sprite2D" parent="creatures/start/Sprite2D"]
+texture = ExtResource("7_te617")
+
+[node name="Area2D" type="Area2D" parent="creatures/start" groups=["menu_start"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="creatures/start/Area2D"]
+shape = SubResource("RectangleShape2D_yvuhy")
+
+[node name="Node2D" type="Node2D" parent="creatures/start"]
+position = Vector2(0, 86)
+script = ExtResource("5_g078l")
+
+[node name="Label" type="Label" parent="creatures/start/Node2D"]
+offset_left = -226.0
+offset_top = -16.0
+offset_right = 259.0
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Drag one creature in this square to start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="credits" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 668.0
+offset_right = 824.0
+offset_bottom = 741.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "By Helagos, for my first LudumDare (LD56)"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="last_score" type="Node2D" parent="."]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="last_score"]
+self_modulate = Color(0.423529, 0.301961, 0.180392, 1)
+position = Vector2(664, 268)
+scale = Vector2(0.924619, 0.517578)
+texture = ExtResource("11_6brhf")
+
+[node name="Sprite2D" type="Sprite2D" parent="last_score/Sprite2D"]
+modulate = Color(1, 1, 1, 0.960784)
+position = Vector2(-0.540788, -7.43866e-05)
+scale = Vector2(0.985541, 0.823585)
+texture = ExtResource("11_6brhf")
+
+[node name="label" type="Label" parent="last_score"]
+offset_left = 320.0
+offset_top = 238.0
+offset_right = 1004.0
+offset_bottom = 293.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "You got x% similarity with y merges"
+
+[node name="drag_drop_helper" type="Node2D" parent="."]
+script = ExtResource("5_ghn4e")
+
+[node name="line" type="Line2D" parent="drag_drop_helper"]
+visible = false
+position = Vector2(1, 0)
+width = 5.0
+default_color = Color(0.721569, 0.721569, 0.721569, 0.607843)
+
+[node name="sprite" type="Sprite2D" parent="drag_drop_helper"]
+position = Vector2(304, 511)
+texture = ExtResource("6_apwc8")
+
+[node name="start" type="Node2D" parent="drag_drop_helper"]
+position = Vector2(543, 390)
+
+[node name="end" type="Node2D" parent="drag_drop_helper"]
+position = Vector2(635, 520)
+
+[node name="drag_drop_helper2" type="Node2D" parent="."]
+script = ExtResource("5_ghn4e")
+
+[node name="line" type="Line2D" parent="drag_drop_helper2"]
+visible = false
+position = Vector2(1, 0)
+width = 5.0
+default_color = Color(0.721569, 0.721569, 0.721569, 0.607843)
+
+[node name="sprite" type="Sprite2D" parent="drag_drop_helper2"]
+position = Vector2(304, 511)
+texture = ExtResource("6_apwc8")
+
+[node name="start" type="Node2D" parent="drag_drop_helper2"]
+position = Vector2(1244, 52)
+
+[node name="end" type="Node2D" parent="drag_drop_helper2"]
+position = Vector2(1150, 237)
+
+[node name="drag_drop_helper3" type="Node2D" parent="."]
+script = ExtResource("5_ghn4e")
+
+[node name="line" type="Line2D" parent="drag_drop_helper3"]
+visible = false
+position = Vector2(1, 0)
+width = 5.0
+default_color = Color(0.721569, 0.721569, 0.721569, 0.607843)
+
+[node name="sprite" type="Sprite2D" parent="drag_drop_helper3"]
+position = Vector2(304, 511)
+texture = ExtResource("6_apwc8")
+
+[node name="start" type="Node2D" parent="drag_drop_helper3"]
+position = Vector2(773, 48)
+
+[node name="end" type="Node2D" parent="drag_drop_helper3"]
+position = Vector2(728, 221)
+
+[node name="drag_drop_helper4" type="Node2D" parent="."]
+script = ExtResource("5_ghn4e")
+
+[node name="line" type="Line2D" parent="drag_drop_helper4"]
+visible = false
+position = Vector2(1, 0)
+width = 5.0
+default_color = Color(0.721569, 0.721569, 0.721569, 0.607843)
+
+[node name="sprite" type="Sprite2D" parent="drag_drop_helper4"]
+position = Vector2(304, 511)
+texture = ExtResource("6_apwc8")
+
+[node name="start" type="Node2D" parent="drag_drop_helper4"]
+position = Vector2(453, 50)
+
+[node name="end" type="Node2D" parent="drag_drop_helper4"]
+position = Vector2(443, 225)
+
+[node name="drag_drop_helper5" type="Node2D" parent="."]
+script = ExtResource("5_ghn4e")
+
+[node name="line" type="Line2D" parent="drag_drop_helper5"]
+visible = false
+position = Vector2(1, 0)
+width = 5.0
+default_color = Color(0.721569, 0.721569, 0.721569, 0.607843)
+
+[node name="sprite" type="Sprite2D" parent="drag_drop_helper5"]
+position = Vector2(304, 511)
+texture = ExtResource("6_apwc8")
+
+[node name="start" type="Node2D" parent="drag_drop_helper5"]
+position = Vector2(825, 387)
+
+[node name="end" type="Node2D" parent="drag_drop_helper5"]
+position = Vector2(707, 523)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 158.0
+offset_top = -1.0
+offset_right = 212.0
+offset_bottom = 68.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 141.0
+offset_top = 56.0
+offset_right = 228.0
+offset_bottom = 88.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Merges"
+horizontal_alignment = 1
+vertical_alignment = 1
