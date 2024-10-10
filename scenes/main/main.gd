@@ -172,7 +172,7 @@ func _test_objectif(c: Creature):
 	if similarity < 33:
 		test_result = Game.ResultType.BAD
 	elif similarity > 75:
-		test_result = Game.ReulstType.GOOD
+		test_result = Game.ResultType.GOOD
 		
 	Game.test_result.emit(test_result)
 		

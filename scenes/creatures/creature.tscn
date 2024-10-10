@@ -239,6 +239,7 @@ libraries = {
 }
 
 [node name="timer" type="Timer" parent="."]
+autostart = true
 
 [connection signal="area_entered" from="colors/red/Area2D" to="." method="_on_area_2d_red_entered"]
 [connection signal="area_exited" from="colors/red/Area2D" to="." method="_on_area_2d_red_exited"]

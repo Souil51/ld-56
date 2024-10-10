@@ -17,7 +17,6 @@ scale = Vector2(0.703125, 0.695312)
 texture = ExtResource("2_lfvd4")
 
 [node name="inner" type="Sprite2D" parent="bonus"]
-scale = Vector2(1, 1)
 texture = ExtResource("3_pboxr")
 
 [node name="label" type="Label" parent="bonus"]

@@ -88,7 +88,6 @@ scale = Vector2(0.703125, 0.695312)
 texture = ExtResource("6_227yj")
 
 [node name="Sprite2D" type="Sprite2D" parent="bonus_manager/store/bonus"]
-scale = Vector2(1, 1)
 texture = ExtResource("7_te617")
 
 [node name="label" type="Label" parent="bonus_manager/store/bonus"]
@@ -122,7 +121,6 @@ scale = Vector2(0.703125, 0.695312)
 texture = ExtResource("6_227yj")
 
 [node name="Sprite2D" type="Sprite2D" parent="bonus_manager/store/bonus2"]
-scale = Vector2(1, 1)
 texture = ExtResource("7_te617")
 
 [node name="label" type="Label" parent="bonus_manager/store/bonus2"]
@@ -156,7 +154,6 @@ scale = Vector2(0.703125, 0.695312)
 texture = ExtResource("6_227yj")
 
 [node name="Sprite2D" type="Sprite2D" parent="bonus_manager/store/bonus3"]
-scale = Vector2(1, 1)
 texture = ExtResource("7_te617")
 
 [node name="label" type="Label" parent="bonus_manager/store/bonus3"]
@@ -444,21 +441,21 @@ visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="last_score"]
 self_modulate = Color(0.423529, 0.301961, 0.180392, 1)
-position = Vector2(664, 268)
-scale = Vector2(0.924619, 0.517578)
+position = Vector2(687.576, 268)
+scale = Vector2(0.98356, 0.517578)
 texture = ExtResource("11_6brhf")
 
 [node name="Sprite2D" type="Sprite2D" parent="last_score/Sprite2D"]
 modulate = Color(1, 1, 1, 0.960784)
-position = Vector2(-0.540788, -7.43866e-05)
-scale = Vector2(0.985541, 0.823585)
+position = Vector2(-0.428663, -7.43866e-05)
+scale = Vector2(0.985821, 0.823585)
 texture = ExtResource("11_6brhf")
 
 [node name="label" type="Label" parent="last_score"]
-offset_left = 320.0
-offset_top = 238.0
-offset_right = 1004.0
-offset_bottom = 293.0
+offset_left = 328.0
+offset_top = 237.0
+offset_right = 1012.0
+offset_bottom = 292.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "You got x% similarity with y merges"
@@ -473,7 +470,7 @@ width = 5.0
 default_color = Color(0.721569, 0.721569, 0.721569, 0.607843)
 
 [node name="sprite" type="Sprite2D" parent="drag_drop_helper"]
-position = Vector2(304, 511)
+position = Vector2(-223, 501)
 texture = ExtResource("6_apwc8")
 
 [node name="start" type="Node2D" parent="drag_drop_helper"]
@@ -492,7 +489,7 @@ width = 5.0
 default_color = Color(0.721569, 0.721569, 0.721569, 0.607843)
 
 [node name="sprite" type="Sprite2D" parent="drag_drop_helper2"]
-position = Vector2(304, 511)
+position = Vector2(-225, 504)
 texture = ExtResource("6_apwc8")
 
 [node name="start" type="Node2D" parent="drag_drop_helper2"]
@@ -511,7 +508,7 @@ width = 5.0
 default_color = Color(0.721569, 0.721569, 0.721569, 0.607843)
 
 [node name="sprite" type="Sprite2D" parent="drag_drop_helper3"]
-position = Vector2(304, 511)
+position = Vector2(-225, 503)
 texture = ExtResource("6_apwc8")
 
 [node name="start" type="Node2D" parent="drag_drop_helper3"]
@@ -530,7 +527,7 @@ width = 5.0
 default_color = Color(0.721569, 0.721569, 0.721569, 0.607843)
 
 [node name="sprite" type="Sprite2D" parent="drag_drop_helper4"]
-position = Vector2(304, 511)
+position = Vector2(-227, 506)
 texture = ExtResource("6_apwc8")
 
 [node name="start" type="Node2D" parent="drag_drop_helper4"]
@@ -549,7 +546,7 @@ width = 5.0
 default_color = Color(0.721569, 0.721569, 0.721569, 0.607843)
 
 [node name="sprite" type="Sprite2D" parent="drag_drop_helper5"]
-position = Vector2(304, 511)
+position = Vector2(-225, 503)
 texture = ExtResource("6_apwc8")
 
 [node name="start" type="Node2D" parent="drag_drop_helper5"]
